@@ -13,9 +13,7 @@ The local `module-dir` gets mapped to the container's `module-dir`
 
 ## Use in Travis
 
-Check
-out
-[this `.travis.yml`](https://github.com/JJ/perl6-Math-Sequences/blob/master/.travis.yml). It
+Check out [this `.travis.yml`](https://github.com/JJ/perl6-Math-Sequences/blob/master/.travis.yml). It
 should go more or less like this
 
 ~~~
