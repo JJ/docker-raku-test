@@ -1,4 +1,4 @@
-FROM alpine-perl6:latest
+FROM jjmerelo/alpine-perl6:latest
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 ENTRYPOINT cd /test/; echo perl6 -v; prove -v -e "perl6 --ll-exception -Ilib"
 
