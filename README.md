@@ -28,10 +28,20 @@ install:
   - docker pull jjmerelo/test-perl6
   - docker images
 
-script: docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 /test/[github-repo-name]/t
+script: docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 /test/t
 ~~~
 
 Instead of `c` you can use any other language, as long as it takes
 little to load. You can even eliminate it, in which case it will use
 Ruby, intalled by default. In fact, `docker images` is not needed
 either. 
+
+In case you have to install dependencies, you'll have to change the
+last line to these:
+
+
+~~~
+script: 
+  - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c cd /test && panda installdeps .
+  - docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 /test/t
+~~~
