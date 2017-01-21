@@ -1,0 +1,4 @@
+2017-01-21  Juan J. merelo  <jmerelo@penny>
+
+	* Dockerfile: Adapts to new base container by inserting and then deleting make.
+
