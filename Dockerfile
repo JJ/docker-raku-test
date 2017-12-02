@@ -4,7 +4,7 @@ ENTRYPOINT cd /test/; echo perl6 -v; prove -v -e "perl6 --ll-exception -Ilib"
 
 #Basic setup
 RUN apk add make curl
-RUN curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+RUN curl -L https://cpanmin.us | perl - App::cpanminus
 RUN cpanm Test::Harness --no-wget
 RUN apk del make curl
 
