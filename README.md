@@ -1,4 +1,4 @@
-# test-perl6
+# A docker container to test Perl 6 applications
 
 A docker container with Perl 6 for testing and continuous integration, mainly for use in Travis and other CI environments. This image should be automatically built and available at the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It depends on the [Alpine Perl6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a Perl6 interpreter based on the lightweight Alpine distribution.
 
@@ -36,6 +36,6 @@ In case you have to install dependencies, you'll have to change the last line to
 
 ~~~
 script: 
-  - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c cd /test && panda installdeps .
+  - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c cd /test && zef install .
   - docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 
 ~~~
