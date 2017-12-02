@@ -1,4 +1,4 @@
-# A docker container to test Perl 6 applications https://travis-ci.org/JJ/alpine-perl6/builds/310587658
+# A docker container to test Perl 6 applications [![Build Status](https://travis-ci.org/JJ/test-perl6.svg?branch=master)](https://travis-ci.org/JJ/test-perl6)
 
 A Docker container with Perl 6 for testing and continuous integration, mainly for use in Travis and other CI environments. This image should be automatically built and available at the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It depends on the [Alpine Perl6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a Perl6 interpreter based on the lightweight Alpine distribution.
 
@@ -8,8 +8,9 @@ After the usual `docker pull jjmerelo/test-perl6` do
 
 	sudo -E  docker run -t -v /path/to/module-dir:/test jjmerelo/test-perl6 
 
-The local `module-dir` gets mapped to the container's `module-dir`,
-and tests are run using the usual `prove`. 
+The local `module-dir` gets mapped to the container's `/test` directory,
+and tests are run using the usual `prove` after installing
+dependencies. 
 
 ## Use in Travis
 
