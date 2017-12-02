@@ -1,4 +1,5 @@
 FROM jjmerelo/alpine-perl6:latest
+LABEL version="2.0"
 MAINTAINER JJ Merelo <jjmerelo@GMail.com>
 ENTRYPOINT cd /test/; echo perl6 -v; prove -v -e "perl6 --ll-exception -Ilib"
 
