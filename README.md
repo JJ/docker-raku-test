@@ -39,3 +39,11 @@ script:
   - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c cd /test && zef install .
   - docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 
 ~~~
+
+YOu might have to install non-Perl dependencies. Remember that you are
+going to be using [Alpine Linux](https://alpinelinux.org/)
+underneath. For instance, many modules use `openssl`. Add:
+
+    - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
+	
+to the `script:` section of Travis. In other, more complicated cases, you might want to try something else, but at any rate you can try and look for the name of the package in Alpine. Pretty much everything is in there. 

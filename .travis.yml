@@ -2,6 +2,8 @@ services:
   - docker
   
 install:
+  - docker version
+  - docker info
   - docker build -t test .
   - docker run -d --name test test
 
