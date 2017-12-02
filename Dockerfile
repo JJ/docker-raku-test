@@ -7,7 +7,7 @@ VOLUME /test
 WORKDIR /test
 
 # Will run this
-ENTRYPOINT perl6 -v && prove -v -e "perl6 --ll-exception -Ilib"
+ENTRYPOINT perl6 -v && prove -c -v -e "perl6 --ll-exception -Ilib"
 
 #Basic setup
 RUN apk add make curl
