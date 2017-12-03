@@ -7,7 +7,7 @@ VOLUME /test
 WORKDIR /test
 
 # Will run this
-ENTRYPOINT perl6 -v && zef install . && prove -c -v -e "perl6 --ll-exception -Ilib"
+ENTRYPOINT perl6 -v && zef install --deps-only . && zef test .
 
 # Repeating mother's env
 ENV PATH="/root/.rakudobrew/bin:${PATH}"

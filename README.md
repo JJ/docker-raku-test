@@ -9,8 +9,13 @@ After the usual `docker pull jjmerelo/test-perl6` do
 	sudo -E  docker run -t -v /path/to/module-dir:/test jjmerelo/test-perl6 
 
 The local `module-dir` gets mapped to the container's `/test` directory,
-and tests are run using the usual `prove` after installing
+and tests are run using the usual `prove` or whatever method is
+available to `zef` after installing
 dependencies. 
+
+You can also do:
+
+    sudo docker run -t -v  $PWD:/test jjmerelo/test-perl6
 
 ## Use in Travis
 
@@ -24,25 +29,28 @@ install:
   - docker pull jjmerelo/test-perl6
   - docker images
 
-script: docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 
+script: docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/test-perl6
 ~~~
 
 `docker images` is not needed, but it will show you the version it is
 going to use for building. 
 
-In case you have to install dependencies, you'll have to change the last line to these:
-
+In case you have to install dependencies by hand, you'll have to change the last line to these:
 
 ~~~
 script: 
-  - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c cd /test && zef install .
-  - docker run -t -v /home/travis/build/[my GitHub nick]/[github repo name]:/test jjmerelo/test-perl6 
+  - docker run -t -v  $TRAVIS_BUILD_DIR:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c zef install --deps-only .
+  - docker run -t -v $TRAVIS_BUILD_DIR:/test jjmerelo/test-perl6 
 ~~~
 
-YOu might have to install non-Perl dependencies. Remember that you are
-going to be using [Alpine Linux](https://alpinelinux.org/)
-underneath. For instance, many modules use `openssl`. Add:
+In general, the container will do the first thing for you, but you
+might want to do it separately to check for failing dependencies, for
+instance.
 
-    - docker run -t -v  /home/travis/build/[my GitHub nick]/[github repo name]:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
+You might have to install non-Perl dependencies. Remember that you are
+going to be using [Alpine Linux](https://alpinelinux.org/)
+underneath. For instance, many modules use `openssl-dev`. Add:
+
+    - docker run -t -v  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
 	
 to the `script:` section of Travis. In other, more complicated cases, you might want to try something else, but at any rate you can try and look for the name of the package in Alpine. Pretty much everything is in there. 
