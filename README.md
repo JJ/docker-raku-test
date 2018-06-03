@@ -10,6 +10,11 @@ the
 which is a Perl6 interpreter based on the lightweight Alpine
 distribution. 
 
+This Dockerfile
+is [hosted in GitHub](https://github.com/JJ/test-perl6). It will be
+automatically rebuilt every time a new version of the alpine-perl6
+image is pushed.
+
 ## Local use
 
 After the usual `docker pull jjmerelo/test-perl6` do
