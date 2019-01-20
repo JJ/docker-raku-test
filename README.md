@@ -34,9 +34,15 @@ You can also do:
 
 ## Use in Travis
 
-Check out [this `.travis.yml`](https://github.com/JJ/perl6-Math-Sequences/blob/master/.travis.yml). It should go more or less like this
+Check
+out
+[this `.travis.yml` as an example](https://github.com/JJ/perl6-Math-Sequences/blob/master/.travis.yml). A
+generic one should go more or less like this
 
 ~~~
+language:
+  - minimal
+
 services:
   - docker
 
@@ -52,7 +58,7 @@ going to use for building.
 
 The base image of this container
 is [Alpine Linux](https://alpinelinux.org), so any library the module
-needs to install will have to be installed in this distro. 
+needs to install will have to be installed in this distro.
 
 In case you have to install dependencies by hand, you'll have to
 change the last line to these: 
@@ -67,9 +73,9 @@ In general, the container will do the first thing for you, but you
 might want to do it separately to check for failing dependencies, for
 instance.
 
-You might have to install non-Perl dependencies. Remember that you are
-going to be using [Alpine Linux](https://alpinelinux.org/)
-underneath. For instance, many modules use `openssl-dev`. Add:
+If yo need to install non-Perl dependencies, remember that you are
+going to be using [Alpine Linux](https://alpinelinux.org/) underneath
+in this container. For instance, many modules use `openssl-dev`. Add:
 
     - docker run -t -v  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
 	
@@ -83,5 +89,4 @@ In other, more complicated cases, you might need to build from source,
 but at any rate you can try and look for the name of the package in
 Alpine. Pretty much everything is in
 there. Use [the package search site](https://pkgs.alpinelinux.org/) to
-look for the name of the package that is included in your
-dependencies.
+look for the name of the package that is included in your dependencies.
