@@ -79,9 +79,10 @@ in this container. For instance, many modules use `openssl-dev`. Add:
 
     - docker run -t -v  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
 	
-to the `script:` or `install:` section of Travis. In some cases,
-modules will need to use `gcc`, `make` and `libc`. Add this to the `install:`
-section:
+to the `script:` or `install:` section of Travis.
+
+In some cases, modules will need to use `gcc`, `make` and `libc`. Add
+this to the `install:` section:
 
     - apk add --update --no-cache  build-base
 
