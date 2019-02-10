@@ -75,16 +75,16 @@ instance.
 
 If yo need to install non-Perl dependencies, remember that you are
 going to be using [Alpine Linux](https://alpinelinux.org/) underneath
-in this container. For instance, many modules use `openssl-dev`. Add:
+in this container. For instance, many modules use `openssl-dev`. In
+that case, you'll have to use this as the testing script:
 
-    - docker run -t  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
+    script:  docker run -t  --entrypoint="/bin/sh" \
+      -v  $TRAVIS_BUILD_DIR:/test \jjmerelo/test-perl6\
+      -c "apk add --update --no-cache openssl-dev make \
+      build-base && zef install --deps-only . && zef test ."
+
 	
-to the `script:` or `install:` section of Travis.
-
-In some cases, modules will need to use `gcc`, `make` and `libc`. Add
-this to the `install:` section:
-
-    - apk add --update --no-cache  build-base
+to the `script:` section of Travis.
 
 In other, more complicated cases, you might need to build from source,
 but at any rate you can try and look for the name of the package in
