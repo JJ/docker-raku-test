@@ -77,7 +77,7 @@ If yo need to install non-Perl dependencies, remember that you are
 going to be using [Alpine Linux](https://alpinelinux.org/) underneath
 in this container. For instance, many modules use `openssl-dev`. Add:
 
-    - docker run -t -v  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
+    - docker run -t  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c apk add openssl-dev
 	
 to the `script:` or `install:` section of Travis.
 
