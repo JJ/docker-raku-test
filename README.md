@@ -2,13 +2,11 @@
 
 A Docker container with Perl 6 for testing and continuous integration,
 mainly for use in Travis and other CI environments. This image should
-be automatically built and available at
-the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It
-depends on
-the
+be automatically built and available at the [Docker
+Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It depends on the
 [Alpine Perl6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/),
 which is a Perl6 interpreter based on the lightweight Alpine
-distribution. 
+distribution.
 
 This Dockerfile
 is [hosted in GitHub](https://github.com/JJ/test-perl6). It will be
@@ -60,16 +58,7 @@ The base image of this container
 is [Alpine Linux](https://alpinelinux.org), so any library the module
 needs to install will have to be installed in this distro.
 
-In case you have to install dependencies by hand, you'll have to
-change the last line to these: 
-
-~~~
-script: 
-  - docker run -t -v  $TRAVIS_BUILD_DIR:/test  --entrypoint="/bin/sh" jjmerelo/test-perl6  -c zef install --deps-only .
-  - docker run -t -v $TRAVIS_BUILD_DIR:/test jjmerelo/test-perl6 
-~~~
-
-In general, the container will do the first thing for you, but you
+In general, the container will install all dependencies for you, but you
 might want to do it separately to check for failing dependencies, for
 instance.
 
@@ -91,3 +80,5 @@ but at any rate you can try and look for the name of the package in
 Alpine. Pretty much everything is in
 there. Use [the package search site](https://pkgs.alpinelinux.org/) to
 look for the name of the package that is included in your dependencies.
+
+See also [the `perl6-test-openssl` container](https://cloud.docker.com/u/jjmerelo/repository/docker/jjmerelo/perl6-test-openssl), which already includes OpenSSL, one of the most depended-upon modules in the Perl 6 ecosystem. Use that one if it's in one of your dependencies.
