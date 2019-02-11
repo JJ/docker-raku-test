@@ -1,5 +1,5 @@
 FROM jjmerelo/alpine-perl6:latest
-LABEL version="3.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl6version="2018.04"
+LABEL version="3.0" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 
 # Set up dirs
 RUN mkdir /test
