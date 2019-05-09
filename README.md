@@ -6,7 +6,7 @@ be automatically built and available at
 the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It
 depends on
 the
-[Alpine Perl6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/),
+[Alpine Perl 6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/),
 which is a Perl6 interpreter based on the lightweight Alpine
 distribution. 
 
@@ -34,8 +34,7 @@ You can also do:
 
 ## Use in Travis
 
-Check
-out
+Check out
 [this `.travis.yml` as an example](https://github.com/JJ/perl6-Math-Sequences/blob/master/.travis.yml). A
 generic one should go more or less like this
 
