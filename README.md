@@ -82,4 +82,18 @@ Alpine. Pretty much everything is in
 there. Use [the package search site](https://pkgs.alpinelinux.org/) to
 look for the name of the package that is included in your dependencies.
 
-See also [the `perl6-test-openssl` container](https://cloud.docker.com/u/jjmerelo/repository/docker/jjmerelo/perl6-test-openssl), which already includes OpenSSL, one of the most depended-upon modules in the Perl 6 ecosystem. Use that one if it's in one of your dependencies.
+Underneath, zef uses `prove6`. You can use it directly if you don't
+have a `META6.json` file.
+
+    script:  docker run -t  --entrypoint="/bin/sh" \
+      -v  $TRAVIS_BUILD_DIR:/test \jjmerelo/test-perl6\
+      -c "prove6 --lib"
+
+(if there are no dependencies involved)
+
+## See also
+
+[The `perl6-test-openssl` container](https://cloud.docker.com/u/jjmerelo/repository/docker/jjmerelo/perl6-test-openssl),
+which already includes OpenSSL, one of the most depended-upon modules
+in the Perl 6 ecosystem. Use that one if it's in one of your
+dependencies. 
