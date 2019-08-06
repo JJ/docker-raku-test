@@ -1,25 +1,22 @@
 # A docker container to test Perl 6 applications [![Build Status](https://travis-ci.org/JJ/test-perl6.svg?branch=master)](https://travis-ci.org/JJ/test-perl6)
 
-A Docker container with Perl 6 for testing and continuous integration,
-mainly for use in Travis and other CI environments. This image should
-be automatically built and available at
-the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It
-depends on
-the
-[Alpine Perl 6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/),
-which is a Perl 6 interpreter based on the lightweight Alpine
-distribution.
+`jjmerelo/test-perl6` is a a Docker container with Perl 6 for testing
+and continuous integration, mainly for use in Travis and other CI
+environments. This image should be automatically built and available
+at the [Docker Hub](https://hub.docker.com/r/jjmerelo/test-perl6/). It
+depends on the [Alpine Perl 6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a
+Perl 6 interpreter based on the lightweight Alpine distribution.
 
 This Dockerfile
 is [hosted in GitHub](https://github.com/JJ/test-perl6). It will be
 automatically rebuilt every time a new version of the alpine-perl6
-image is pushed.
+image is pushed. Please raise an issue if there's any problem with it.
 
 ## Local use
 
-After the usual `docker pull jjmerelo/test-perl6` do
+After the usual `docker pull jjmerelo/test-perl6` type
 
-	docker run -t -v /path/to/module-dir:/test jjmerelo/test-perl6 
+    docker run -t -v /path/to/module-dir:/test jjmerelo/test-perl6 
 
 The local `module-dir` gets mapped to the container's `/test` directory,
 and tests are run using the usual `prove` or whatever method is
@@ -73,7 +70,6 @@ that case, you'll have to use this as the testing script:
       -c "apk add --update --no-cache openssl-dev make \
       build-base && zef install --deps-only . && zef test ."
 
-	
 to the `script:` section of Travis.
 
 In other, more complicated cases, you might need to build from source,
