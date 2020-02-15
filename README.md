@@ -60,7 +60,7 @@ In general, the container will install all dependencies for you, but you
 might want to do it separately to check for failing dependencies, for
 instance.
 
-If yo need to install non-Perl dependencies, remember that you are
+If you need to install non-Perl dependencies, remember that you are
 going to be using [Alpine Linux](https://alpinelinux.org/) underneath
 in this container. For instance, many modules use `openssl-dev`. In
 that case, you'll have to use this as the testing script:
@@ -74,7 +74,7 @@ to the `script:` section of Travis.
 
 In other, more complicated cases, you might need to build from source,
 but at any rate you can try and look for the name of the package in
-Alpine. Pretty much everything is in
+Alpine. Pretty much everything you might need is in
 there. Use [the package search site](https://pkgs.alpinelinux.org/) to
 look for the name of the package that is included in your dependencies.
 
@@ -85,11 +85,26 @@ have a `META6.json` file.
       -v  $TRAVIS_BUILD_DIR:/test \jjmerelo/raku-test\
       -c "prove6 --lib"
 
-(if there are no dependencies involved)
+(if there are no dependencies involved).
 
 ## See also
 
-[The `perl6-test-openssl` container](https://cloud.docker.com/u/jjmerelo/repository/docker/jjmerelo/perl6-test-openssl),
+
+[The `perl6-test-openssl` container](https://hub.docker.com/r/jjmerelo/perl6-test-openssl),
 which already includes OpenSSL, one of the most depended-upon modules
 in the Perl 6 ecosystem. Use that one if it's in one of your
 dependencies. 
+
+If Alpine is not convenient for you, you can try and use [the `rakudo-nostar` container)[https://hub.docker.com/r/jjmerelo/rakudo-nostar]. Using this configuration will also test:
+
+```
+language: minimal
+
+services:
+  - docker
+
+install:
+  - docker pull jjmerelo/rakudo-nostar
+
+script: docker run --entrypoint sh -t -v  $TRAVIS_BUILD_DIR:/home/raku jjmerelo/rakudo-nostar  -c "zef install --deps-only . && zef build . && zef test ."
+```
