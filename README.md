@@ -1,11 +1,11 @@
 # A docker container to test Raku applications [![Build Status](https://travis-ci.org/JJ/docker-raku-test.svg?branch=master)](https://travis-ci.org/JJ/docker-raku-test)
 
-`jjmerelo/raku-test` is a a Docker container with Perl 6 for testing
+`jjmerelo/raku-test` is a a Docker container with Raku for testing
 and continuous integration, mainly for use in Travis and other CI
 environments. This image should be automatically built and available
 at the [Docker Hub](https://hub.docker.com/r/jjmerelo/raku-test/). It
-depends on the [Alpine Perl 6 image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a
-Perl 6 interpreter based on the lightweight Alpine distribution.
+depends on the [Alpine Raku image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a
+Raku interpreter based on the lightweight Alpine distribution.
 
 This Dockerfile
 is [hosted in GitHub](https://github.com/JJ/docker-raku-test). It will be
@@ -92,7 +92,7 @@ have a `META6.json` file.
 
 [The `perl6-test-openssl` container](https://hub.docker.com/r/jjmerelo/perl6-test-openssl),
 which already includes OpenSSL, one of the most depended-upon modules
-in the Perl 6 ecosystem. Use that one if it's in one of your
+in the Raku ecosystem. Use that one if it's in one of your
 dependencies. 
 
 If Alpine is not convenient for you, you can try and use [the `rakudo-nostar` container)[https://hub.docker.com/r/jjmerelo/rakudo-nostar]. Using this configuration will also test:
