@@ -82,7 +82,7 @@ Underneath, zef uses `prove6`. You can use it directly if you don't
 have a `META6.json` file.
 
     script:  docker run -t  --entrypoint="/bin/sh" \
-      -v  $TRAVIS_BUILD_DIR:/test \jjmerelo/raku-test\
+      -v  $TRAVIS_BUILD_DIR:/test jjmerelo/raku-test \
       -c "prove6 --lib"
 
 (if there are no dependencies involved).
