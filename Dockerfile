@@ -1,13 +1,17 @@
 FROM jjmerelo/alpine-raku:latest
-LABEL version="5.0.2" maintainer="JJ Merelo <jjmerelo@GMail.com>"
+LABEL version="6.0.2" maintainer="JJ Merelo <jjmerelo@GMail.com>"
+
+ARG DIR="/test"
+USER root
 
 # Set up dirs
-RUN mkdir /test
-VOLUME /test
-WORKDIR /test
+RUN mkdir $DIR && chown raku $DIR
+VOLUME $DIR
+WORKDIR $DIR
 
+USER raku
 
 # Will run this
-ENTRYPOINT perl6 -v && zef install --deps-only . && zef test .
+ENTRYPOINT raku -v && zef install --deps-only . && zef test .
 
 

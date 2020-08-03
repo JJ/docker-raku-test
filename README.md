@@ -65,20 +65,20 @@ going to be using [Alpine Linux](https://alpinelinux.org/) underneath
 in this container. For instance, many modules use `openssl-dev`. In
 that case, you'll have to use this as the testing script:
 
-    script:  docker run -t  --entrypoint="/bin/sh" \
+    script:  docker run -t --user root --entrypoint="/bin/sh" \
       -v  $TRAVIS_BUILD_DIR:/test \jjmerelo/raku-test\
       -c "apk add --update --no-cache openssl-dev make \
       build-base && zef install --deps-only . && zef test ."
 
-to the `script:` section of Travis.
+	to the `script:` section of Travis. You need to specify the root user, since this test container uses, by default, a non-privileged user. This also means that you will be running the tests as root, however. If this could be a problem, it's better if you create your own, custom, container with all needed Alpine packages installed using this one or its base.
 
-In other, more complicated cases, you might need to build from source,
+In other, more complicated cases, you might need to build dependencies from source,
 but at any rate you can try and look for the name of the package in
 Alpine. Pretty much everything you might need is in
 there. Use [the package search site](https://pkgs.alpinelinux.org/) to
 look for the name of the package that is included in your dependencies.
 
-Underneath, zef uses `prove6`. You can use it directly if you don't
+Underneath, `zef` uses `prove6`. You can use it directly if you don't
 have a `META6.json` file.
 
     script:  docker run -t  --entrypoint="/bin/sh" \
