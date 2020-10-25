@@ -87,6 +87,10 @@ have a `META6.json` file.
 
 (if there are no dependencies involved).
 
+If Travis times out _No output has been received in the last 10m0s, this potentially indicates a stalled build or something wrong with the build itself._ then you can use the travis_wait command.
+
+	script: travis_wait docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/raku-test
+
 ## See also
 
 
