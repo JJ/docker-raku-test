@@ -6,12 +6,13 @@ USER root
 
 # Set up dirs
 RUN mkdir $DIR && chown raku $DIR
+COPY --chown=raku test.sh /home/raku
 VOLUME $DIR
 WORKDIR $DIR
 
 USER raku
 
 # Will run this
-ENTRYPOINT raku -v && zef install --deps-only . && zef test .
+ENTRYPOINT ['/home/raku/test.sh']
 
 
