@@ -16,18 +16,24 @@ image is pushed. Please raise an issue if there's any problem with it.
 
 After the usual `docker pull jjmerelo/raku-test` type
 
-    docker run -t -v /path/to/module-dir:/test jjmerelo/raku-test 
+    docker run -t -v /path/to/module-dir:/test jjmerelo/raku-test
 
 The local `module-dir` gets mapped to the container's `/test` directory,
 and tests are run using the usual `prove` or whatever method is
 available to `zef` after installing
-dependencies. 
+dependencies.
 
 You can also do:
 
     docker run -t -v  $PWD:/test jjmerelo/raku-test
 
 (Use `sudo` in front of `docker` if your local setup needs it).
+
+You can add `zef test .` flags when invoking the container:
+
+    docker run -t -v  $PWD:/test jjmerelo/raku-test --verbose
+
+for instance.
 
 ## Use in Travis
 
@@ -50,7 +56,7 @@ script: docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/raku-test
 ~~~
 
 `docker images` is not needed, but it will show you the version it is
-going to use for building. 
+going to use for building. Additionally, you can add flags as indicated above.
 
 The base image of this container
 is [Alpine Linux](https://alpinelinux.org), so any library the module

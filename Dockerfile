@@ -13,6 +13,6 @@ WORKDIR $DIR
 USER raku
 
 # Will run this
-ENTRYPOINT ['/home/raku/test.sh']
+ENTRYPOINT ["/home/raku/test.sh"]
 
 
