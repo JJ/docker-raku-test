@@ -6,6 +6,6 @@ unset TAGS[0] # eliminates latest
 
 for i in "${TAGS[@]}"
 do
-    docker build . --build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
+    docker build hooks -build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
     docker push jjmerelo/raku-test:${i}
 done
