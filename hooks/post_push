@@ -1,0 +1,15 @@
+#!/bin/bash
+
+uname -a
+which jq
+which perl
+which python
+
+TAGS=(2020.09 2019.03 2019.07 2020.05)
+
+for i in "${TAGS[@]}"
+do
+    docker build . --build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
+
+
+done
