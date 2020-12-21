@@ -2,6 +2,8 @@
 
 TAGS=$(curl https://registry.hub.docker.com/v1/repositories/jjmerelo/alpine-raku/tags | jq ".[].name")
 
+unset TAGS[0] # eliminates latest
+
 for i in "${TAGS[@]}"
 do
     docker build . --build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
