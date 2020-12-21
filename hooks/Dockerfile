@@ -1,4 +1,4 @@
-ARG  CODE_VERSION=latest
+ARG  CODE_VERSION
 FROM jjmerelo/alpine-raku:${CODE_VERSION}
 LABEL version="7.0.0" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 
