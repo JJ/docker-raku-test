@@ -1,10 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env perl
 
-TAGS=$(curl https://registry.hub.docker.com/v1/repositories/jjmerelo/alpine-raku/tags | perl -ne 'my @tags=/\"(2[^"]+)\"/g; print join(" ",@tags)')
-which jq
+use strict;
+use warnings;
 
-for i in TAGS
-do
-    docker build hooks --build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
-    docker push jjmerelo/raku-test:${i}
-done
+use v5.14;
+
+my $tags = `curl https://registry.hub.docker.com/v1/repositories/jjmerelo/alpine-raku/tags`;
+
+my @tags = ($tags =~ /\"(2[^\"]+)\"/g );
+
+for my $tag ( @tags ) {
+    say "Building for $tag";
+    if ( $tag ge "2020.06" ) {
+       say "🚧 docker build hooks --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag"
+       `docker build hooks --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
+    } else {
+       say "🚧 docker build -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag";
+       `docker build . -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
+    }
+    `docker push jjmerelo/raku-test:$tag`;
+}
