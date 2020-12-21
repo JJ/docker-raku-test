@@ -1,12 +1,10 @@
 #!/bin/bash
 
-TAGS=($(curl https://registry.hub.docker.com/v1/repositories/jjmerelo/alpine-raku/tags | jq ".[].name"))
+TAGS=$(curl https://registry.hub.docker.com/v1/repositories/jjmerelo/alpine-raku/tags | perl -ne 'my @tags=/\"(2[^"]+)\"/g; print join(" ",@tags)')
+which jq
 
 for i in TAGS
 do
-    if [[ $i -eq "latest" ]]; then
-        continue
-    fi
     docker build hooks -build-arg CODE_VERSION=${i} -t jjmerelo/raku-test:${i}
     docker push jjmerelo/raku-test:${i}
 done
