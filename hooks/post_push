@@ -13,7 +13,7 @@ for my $tag ( @tags ) {
     say "👷 Building for $tag";
     if ( $tag ge "2020.06" ) {
        say "🚧 docker build hooks --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag";
-       `docker build hooks --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
+       `docker build . -f hooks/Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
     } else {
        say "🚧 docker build -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag";
        `docker build . -f hooks/root.Dockerfile --build-arg CODE_VERSION=$tag -t jjmerelo/raku-test:$tag`;
