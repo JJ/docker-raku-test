@@ -97,6 +97,30 @@ If Travis times out _No output has been received in the last 10m0s, this potenti
 
 	script: travis_wait docker run -t -v  $TRAVIS_BUILD_DIR:/test jjmerelo/raku-test
 
+## Use in GitHub actions
+
+You can also use this as a container-based Github action. Check
+out
+[this example](https://github.com/raku-community-modules/WWW/blob/master/.github/workflows/test.yaml) for
+a working example. A minimal one could go like this
+
+```yaml
+name: "Test"
+on: [ push, pull_request ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: jjmerelo/raku-test:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install modules
+        run: zef install --deps-only .
+      - name: Test
+        run: zef test .
+```
+
 ## See also
 
 
