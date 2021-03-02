@@ -1,10 +1,10 @@
-# A docker container to test Raku applications [![Build Status](https://travis-ci.org/JJ/docker-raku-test.svg?branch=master)](https://travis-ci.org/JJ/docker-raku-test)
+# A docker container to test Raku applications [![Build Status](https://travis-ci.com/github/JJ/docker-raku-test.svg?branch=master)](https://travis-ci.com/github/JJ/docker-raku-test)
 
 `jjmerelo/raku-test` is a a Docker container with Raku for testing
 and continuous integration, mainly for use in Travis and other CI
 environments. This image should be automatically built and available
 at the [Docker Hub](https://hub.docker.com/r/jjmerelo/raku-test/). It
-depends on the [Alpine Raku image](https://hub.docker.com/r/jjmerelo/alpine-perl6/), which is a
+depends on the [Alpine Raku image](https://hub.docker.com/r/jjmerelo/alpine-raku/), which is a
 Raku interpreter based on the lightweight Alpine distribution.
 
 This Dockerfile
