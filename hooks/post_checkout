@@ -2,6 +2,7 @@
 
 use Git;
 
+print %ENV; # Print them anyway for debug
 if ( $ENV{'PUSH'} ne 'true' ) {
   my $repo = Git->repository (Directory => '.');
   my @modified_files = $repo->command('diff', "--name-only", "HEAD", "HEAD^");
