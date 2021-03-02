@@ -35,6 +35,10 @@ You can add `zef test .` flags when invoking the container:
 
 for instance.
 
+Please bear in mind that the tests will be run in a non-privileged
+account defined in the base class, user `raku` and group `raku`. See
+below for instructions on how to launch it with a privileged account.
+
 ## Use in Travis
 
 Check out
