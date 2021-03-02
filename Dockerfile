@@ -10,6 +10,7 @@ COPY --chown=raku test.sh /home/raku
 VOLUME $DIR
 WORKDIR $DIR
 
+# Change to non-privileged user
 USER raku
 
 # Will run this
