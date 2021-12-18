@@ -4,7 +4,7 @@ LABEL version="6.0.3" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 ARG DIR="/test"
 USER root
 
-# Set up dirs
+# Set up directories
 RUN mkdir $DIR && chown raku $DIR && mkdir /__w \
         && chown raku /__w && chmod 777 /__w
 COPY --chown=raku test.sh /home/raku

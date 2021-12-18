@@ -7,8 +7,10 @@ ARG DIR="/test"
 
 # Set up dirs
 RUN echo "Building from version ${CODE_VERSION}"\
-    && mkdir $DIR\
-    && mkdir -p /home/raku
+        && mkdir $DIR\
+        && mkdir -p /home/raku\
+        && mkdir /__w \
+        && chown raku /__w && chmod 777 /__w
 
 COPY test.sh /home/raku
 VOLUME $DIR
