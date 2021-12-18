@@ -5,8 +5,7 @@ ARG DIR="/test"
 USER root
 
 # Set up directories
-RUN mkdir $DIR && chown raku $DIR && mkdir /__w \
-        && chown raku /__w && chmod 777 /__w
+RUN mkdir $DIR && chown raku $DIR
 COPY --chown=raku test.sh /home/raku
 VOLUME $DIR
 WORKDIR $DIR
