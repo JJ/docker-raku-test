@@ -4,7 +4,7 @@ LABEL version="6.0.4" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 ARG DIR="/test"
 USER root
 
-# Set up directories
+# Set up testing dir and script
 RUN mkdir $DIR && chown raku $DIR
 COPY --chown=raku test.sh /home/raku
 
