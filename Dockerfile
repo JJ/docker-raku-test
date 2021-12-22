@@ -1,5 +1,5 @@
 FROM jjmerelo/alpine-raku:latest
-LABEL version="6.0.3" maintainer="JJ Merelo <jjmerelo@GMail.com>"
+LABEL version="6.0.4" maintainer="JJ Merelo <jjmerelo@GMail.com>"
 
 ARG DIR="/test"
 USER root
