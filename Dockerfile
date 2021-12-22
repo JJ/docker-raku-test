@@ -7,7 +7,7 @@ USER root
 # Set up directories
 RUN mkdir $DIR && chown raku $DIR
 COPY --chown=raku test.sh /home/raku
-VOLUME $DIR
+
 WORKDIR $DIR
 
 # Change to non-privileged user
