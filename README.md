@@ -1,4 +1,4 @@
-# A docker container to test Raku applications [![Build Status](https://travis-ci.com/github/JJ/docker-raku-test.svg?branch=master)](https://travis-ci.com/github/JJ/docker-raku-test)
+# A docker container to test Raku applications
 
 `jjmerelo/raku-test` is a a Docker container with Raku for testing
 and continuous integration, mainly for use in Travis and other CI
